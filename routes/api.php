@@ -19,7 +19,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group([
-    'middleware' => 'api',
     'prefix' => 'auth'
 ], function () {
     Route::post('/login', [UserController::class, 'login']);
@@ -28,12 +27,12 @@ Route::group([
 
 
 Route::group([
-    'middleware' => 'api',
+    'middleware' => 'admin',
     'prefix' => 'auth'
 ], function () {
-    Route::post('/admin/register', [AdminController::class, 'register']);
-    Route::post('/admin/blockUser', [AdminController::class, 'blockUser']);
-    Route::post('/admin/deleteUser', [AdminController::class, 'deleteUser']);
-    Route::post('/admin/activeUser', [AdminController::class, 'activeUser']);
+    Route::post('/register', [AdminController::class, 'register']);
+    Route::post('/blockUser', [AdminController::class, 'blockUser']);
+    Route::post('/deleteUser', [AdminController::class, 'deleteUser']);
+    Route::post('/activeUser', [AdminController::class, 'activeUser']);
 });
 
